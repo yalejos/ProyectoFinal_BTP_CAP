@@ -1,5 +1,6 @@
 using {SalesOrder as service} from '../service';
 using from './annotations-items';
+
 annotate service.SalesHeader with @odata.draft.enabled;
 
 annotate service.SalesHeader with {
@@ -221,6 +222,7 @@ annotate service.SalesHeader with @(
       
 );
 
+//Controlar visibilidad
 annotate service.SalesHeader with actions {
     @Core.OperationAvailable: { $edmJson: { $And: [
         { $Eq: [{ $Path: 'orderStatus_code' }, 'O'] }, 
@@ -239,8 +241,6 @@ annotate service.SalesHeader with actions {
     cancelOrder;
     
 };
-
-
 
 annotate service.SalesHeader with @(
     UI.UpdateHidden : isLockedInDetail,

@@ -1,7 +1,7 @@
 
 const cds = require('@sap/cds');
 const { SELECT, UPDATE } = require('@sap/cds/lib/ql/cds-ql');
-//const { convertProcessSignalToExitCode } = require('node:util');
+
 
 const STATUS = {
     OPEN: 'O',
@@ -31,10 +31,7 @@ module.exports = class SalesOrder extends cds.ApplicationService {
                 maxID = 0; // Si no hay registros, empezamos desde 0
             }
 
-            // IMPORTANTE: Usamos maxID + 1
             req.data.orderID = `SO-${(maxID + 1).toString().padStart(5, '0')}`;
-
-            // --- Seteo del Estatus por defecto (Open) ---
             req.data.orderStatus_code = STATUS.OPEN;
 
             // --- Cálculo de la fecha (Hoy + 7 días) ---
@@ -56,7 +53,6 @@ module.exports = class SalesOrder extends cds.ApplicationService {
             }
 
             // 2. Buscamos el último item SOLO para este header en la tabla de DRAFTS
-            // Es vital buscar en .drafts porque el usuario aún no ha guardado
             const lastItem = await SELECT.one.from(SalesItems.drafts)
                 .columns('itemID')
                 .where({ header_ID: headerID })
@@ -70,7 +66,6 @@ module.exports = class SalesOrder extends cds.ApplicationService {
                 nextItemNum = lastNum + 1;
             }
 
-            // 3. Asignamos el nuevo ID
             req.data.itemID = `IT-${nextItemNum.toString().padStart(4, '0')}`;
 
         });
@@ -132,7 +127,6 @@ module.exports = class SalesOrder extends cds.ApplicationService {
         // --- Acciones de Items ---
 
         this.on('getDefaultsForRelease', async (req) => {
-            // This catches the function call regardless of the entity path
             const today = new Date().toISOString().split('T')[0];
             return { release_date: today };
         });
@@ -140,7 +134,6 @@ module.exports = class SalesOrder extends cds.ApplicationService {
         this.on('getDefaultsForDelivery', SalesHeader, async (req) => {
             const id = req.params[0].ID || req.params[0];
 
-            // Leer el campo deliveryDate del registro actual
             const header = await SELECT.one.from(SalesHeader.drafts).where({ ID: id })
                 || await SELECT.one.from(SalesHeader).where({ ID: id });
 
@@ -187,7 +180,7 @@ module.exports = class SalesOrder extends cds.ApplicationService {
 
             await UPDATE(SalesItems.drafts).set({
                 discontinuedDate: today,
-                price: 0 // <--- Limpieza automática para que no sume en e total
+                price: 0 
             })
                 .where({ ID: id });
             return { message: `Product has been successfully marked as discontinued.` };

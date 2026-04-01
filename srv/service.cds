@@ -21,7 +21,7 @@ service SalesOrder {
         }  order by
             orderID asc
         actions {
-            //Accionesde cabecera con controles dinámicos de visibilidad y side effects
+            //Acciones de cabecera con controles dinámicos de visibilidad y side effects
             @Common: {SideEffects: {
                 $Type           : 'Common.SideEffectsType',
                 SourceProperties: [orderStatus_code],
@@ -76,7 +76,7 @@ service SalesOrder {
             @(Common.DefaultValuesFunction: 'getDefaultsForRelease')
             action releaseProduct(release_date: formRelease:freleasedate);
 
-            //Side effect para se refresque la ui
+        
             @Common.SideEffects #OnDiscontinue: {
                 SourceProperties: [discontinuedDate],
                 TargetProperties: [
