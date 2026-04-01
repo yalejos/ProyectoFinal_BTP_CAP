@@ -1,0 +1,15 @@
+code,symbol,minorUnit,name,descr
+USD,$,2,US Dollar,United States Dollar
+EUR,€,2,Euro,Euro
+GBP,£,2,British Pound,British Pound Sterling
+JPY,¥,0,Japanese Yen,Japanese Yen
+CHF,CHF,2,Swiss Franc,Swiss Franc
+CNY,¥,2,Yuan Renminbi,Chinese Yuan Renminbi
+MXN,$,2,Mexican Peso,Mexican Peso
+BRL,R$,2,Brazilian Real,Brazilian Real
+CLP,$,0,Chilean Peso,Chilean Peso
+COP,$,2,Colombian Peso,Colombian Peso
+PEN,S/.,2,Sol,Peruvian Sol
+ARS,$,2,Argentine Peso,Argentine Peso
+CAD,$,2,Canadian Dollar,Canadian Dollar
+AUD,$,2,Australian Dollar,Australian Dollar

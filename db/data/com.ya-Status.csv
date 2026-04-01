@@ -1,0 +1,5 @@
+code,criticality,name,descr
+O,2,Open,Order is created and pending review
+C,3,Confirmed,Order has been verified and accepted
+S,3,Shipped,Order has been dispatched to the customer
+X,1,Cancelled,Order has been terminated

@@ -1,0 +1,2 @@
+ID,orderID,email,firstName,lastName,country_code,createOn,deliveryDate,orderStatus_code,image,imageType,createdAt,createdBy,modifiedAt,modifiedBy
+7544bd0a-3a72-4674-83f1-f89a962a98f1,SO-000001,yalejos@example.com,Yenifer,Alejos,ES,2026-03-18,2026-03-25T10:00:00Z,O

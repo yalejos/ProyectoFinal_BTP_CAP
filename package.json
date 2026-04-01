@@ -1,0 +1,18 @@
+{
+  "name": "sales",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "dependencies": {
+    "@sap/cds": "^9.8.3",
+    "express": "^4.22.1"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2",
+    "@sap/cds-dk": "^9.8.1",
+    "@types/node": "^25.5.0"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "private": true
+}

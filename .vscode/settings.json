@@ -1,0 +1,23 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "Sales",
+            "database": "${workspaceFolder:sales}/sales.sqlite"
+        }
+    ],
+    "mdk.defaultEditor": "Text Editor",
+    "workbench.editorAssociations": {
+        "*.app": "default",
+        "*.global": "default",
+        "*.action": "default",
+        "*.extension": "default",
+        "*.page": "default",
+        "*.service": "default",
+        "*.cim": "default",
+        "*.rule": "default",
+        "*.properties": "default",
+        "*.fragment": "default"
+    }
+}
