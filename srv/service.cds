@@ -36,8 +36,9 @@ service SalesOrder {
 
             @Common: {SideEffects: {
                 $Type           : 'Common.SideEffectsType',
+                TriggerAction : 'shipOrder',
                 SourceProperties: [orderStatus_code],
-                TargetProperties: ['orderStatus_code'],
+                TargetProperties: ['orderStatus_code', 'isLockedInDetail'],
                 TargetEntities  : [$self]
             }}
 
@@ -46,8 +47,9 @@ service SalesOrder {
 
             @Common: {SideEffects: {
                 $Type           : 'Common.SideEffectsType',
+                TriggerAction : 'cancelOrder',
                 SourceProperties: [orderStatus_code],
-                TargetProperties: ['orderStatus_code'],
+                TargetProperties: ['orderStatus_code', 'isLockedInDetail'],
                 TargetEntities  : [$self]                
             }}
             action   cancelOrder();
